@@ -1,9 +1,6 @@
 # ARC TESTNET: CONTRACT DEPLOYMENT
 
 
-> 📄 **README.md**
-
-
 ## Prerequisites
 
 * First open and login your github
