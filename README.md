@@ -1,21 +1,15 @@
 # Arc-Testnet---Deploy-a-Contract
-# HelloArchitect — Deploying a Smart Contract on Arc Testnet (Foundry)
+
 
 > 📄 **README.md**
->
-> This repository demonstrates how to write, test, and deploy a Solidity smart contract to **Arc Testnet** using **Foundry**.
 
-This guide walks you step by step through installing Foundry, writing a simple Solidity contract, testing it, and deploying it to **Arc Testnet**.
-
----
 
 ## Prerequisites
 
-* Linux / macOS / WSL
-* `curl` installed
-* A wallet **private key** with Arc testnet funds
-
-> ⚠️ Never share your private key publicly.
+* First open and login your github
+* Go to [github.com/codespaces](https://github.com/codespaces)
+* Open blank template
+* Go to [Faucet](https://faucet.circle.com/) -> take faucet in the wallet that you're using to deploy the contract
 
 ---
 
@@ -293,54 +287,3 @@ You have successfully:
 Happy building on Arc 🚀
 
 ---
-
-## 🚀 One‑Click Deployment Script (Bash)
-
-Create a file called `deploy_arc.sh` in the project root and paste the script below.
-
-```bash
-#!/usr/bin/env bash
-set -e
-
-# ========== CONFIG CHECK ==========
-if ! command -v forge >/dev/null 2>&1; then
-  echo "❌ Foundry not installed. Installing Foundry..."
-  curl -L https://foundry.paradigm.xyz | bash
-  source ~/.bashrc
-  foundryup
-fi
-
-# ========== ENV CHECK ==========
-if [ ! -f .env ]; then
-  echo "❌ .env file not found"
-  echo "Create a .env file with:"
-  echo "ARC_TESTNET_RPC_URL=..."
-  echo "PRIVATE_KEY=..."
-  exit 1
-fi
-
-source .env
-
-if [ -z "$ARC_TESTNET_RPC_URL" ] || [ -z "$PRIVATE_KEY" ]; then
-  echo "❌ Missing ARC_TESTNET_RPC_URL or PRIVATE_KEY in .env"
-  exit 1
-fi
-
-# ========== TEST ==========
-echo "🧪 Running tests..."
-forge test
-
-# ========== BUILD ==========
-echo "🏗️  Building contract..."
-forge build
-
-# ========== DEPLOY ==========
-echo "🚀 Deploying HelloArchitect to Arc Testnet..."
-forge create src/HelloArchitect.sol:HelloArchitect \
-  --rpc-url "$ARC_TESTNET_RPC_URL" \
-  --private-key "$PRIVATE_KEY" \
-  --broadcast
-
-echo "✅ Deployment finished"
-
-```
