@@ -261,29 +261,6 @@ After successful deployment, you will see:
 
 ---
 
-## 🎉 Deployment Complete!
-
----
-
-## 📂 Repository Structure
-
-```
-hello-arc/
-├── src/
-│   └── HelloArchitect.sol
-├── test/
-│   └── HelloArchitect.t.sol
-├── .env
-├── foundry.toml
-└── README.md
-```
-
-You have successfully:
-
-* Written a Solidity contract
-* Tested it using Foundry
-* Deployed it to **Arc Testnet**
-
-Happy building on Arc 🚀
+##  Deployment Complete!
 
 ---
